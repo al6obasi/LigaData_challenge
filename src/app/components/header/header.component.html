@@ -1,0 +1,33 @@
+<div style="height: 100vh;">
+    <mat-toolbar color="primary">
+            <button mat-icon-button (click)="sidenav.toggle()" fxHide.gt-sm>
+                <mat-icon>menu</mat-icon>
+            </button>
+            <a href="https://www.ligadata.com" target="_blank" class="positronx"><h1>Liga Data</h1></a>
+            <div fxFlex fxLayout fxLayoutAlign="end">
+                <div fxHide.lt-md>
+                        <a mat-button routerLink="articles" routerLinkActive="active"  *ngIf="isLoggedIn()">Articals</a>
+                        <a mat-button routerLink="login" routerLinkActive="active" *ngIf="!isLoggedIn()">Log in</a>
+                        <a mat-button mat-raised-button routerLink="register"  *ngIf="!isLoggedIn()" routerLinkActive="active">Register</a>
+                        <a mat-button  [routerLink]="login"  routerLinkActive="active" (click)="onLoggedout()"  *ngIf="isLoggedIn()">
+                        <i class="fa fa-fw fa-power-off"></i> Log Out
+                        </a>
+                </div>
+            </div>
+    </mat-toolbar>
+    <mat-sidenav-container fxFlexFill class="example-container">
+            <mat-sidenav #sidenav fxLayout="column">
+                <div fxLayout="column">
+                    <a mat-button routerLink="articles" routerLinkActive="active" *ngIf="isLoggedIn()">Articals</a>
+                    <a mat-button routerLink="login" routerLinkActive="active" *ngIf="!isLoggedIn()">Log in</a>
+                    <a mat-button mat-raised-button routerLink="register" routerLinkActive="active" *ngIf="!isLoggedIn()">Register</a>
+                    <a mat-button mat-raised-button [routerLink]="login"  routerLinkActive="active" *ngIf="isLoggedIn()" (click)="onLoggedout()">
+                    <i class="fa fa-fw fa-power-off"></i> Log Out
+                    </a>
+                </div>
+            </mat-sidenav>
+            <mat-sidenav-content fxFlexFill>
+                <router-outlet></router-outlet>
+            </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

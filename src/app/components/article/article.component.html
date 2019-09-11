@@ -1,0 +1,36 @@
+<div fxFlex fxLayout="column" fxLayoutGap="20px" style="height: 100vh">
+		<app-alert [type]="alertMsg.type" [msg]="alertMsg.msg"></app-alert>
+		<div fxFlex="15" fxFlex.md="33" fxFlex.sm="50" fxFlex.xs="100" fxLayout="column" style="padding: 5px;">
+			<button mat-stroked-button class="btn-block" (click)="openDialog()" color="accent">Create Artical</button>
+		</div>
+		
+		<div fxLayout="row wrap">
+		  <div
+		  *ngFor="let artical of articals; let i = index"
+			fxFlex="25"
+			fxFlex.md="33"
+			fxFlex.sm="50"
+			fxFlex.xs="100"
+			fxLayout="column"
+			style="padding: 5px;"
+		  >
+		  <mat-card class="artical-card">
+				<mat-card-header>
+					<mat-card-title>{{artical.title}}</mat-card-title>
+					<mat-card-subtitle>{{artical.date}}</mat-card-subtitle>
+				</mat-card-header>
+				<img mat-card-image   [src]="artical.image" alt="{{artical.title}}">
+				<mat-card-content>
+					<p>
+						{{artical.content}}
+					</p>
+				</mat-card-content>
+				<mat-card-actions>
+					<button mat-button  color="primary" (click) ="editArtical(i, artical)">EDIT
+					</button>
+					<button mat-button color="warn" (click) ="deleteArtical(artical)">DELETE</button>
+				</mat-card-actions>
+			</mat-card>
+		  </div>
+		</div>
+	  </div>

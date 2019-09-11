@@ -1,0 +1,45 @@
+<form class="example-form" role="form" [formGroup]="articalDailogForm" (ngSubmit)="updatedArtical ? editArtical() : save() ">
+      <h2 mat-dialog-title>{{header}}</h2>
+      <mat-dialog-content >
+         <mat-form-field>
+            <input matInput
+               placeholder="Title"
+               formControlName="title">
+               
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput [matDatepicker]="myDatepicker" placeholder="Choose a date"
+               formControlName="date">
+            <mat-datepicker-toggle matSuffix
+               [for]="myDatepicker">
+            </mat-datepicker-toggle>
+            <mat-datepicker #myDatepicker></mat-datepicker>
+         </mat-form-field>
+         <br>
+         <mat-form-field>
+            <textarea matInput placeholder="Content"
+               formControlName="content">
+            </textarea>
+         </mat-form-field>
+         <br>
+         <mat-form-field>
+            <span style="color:red;" *ngIf="message">{{message}}</span>
+            <input type="text" matInput style="display: none">
+            <input #file type="file" accept='image/*' (change)="preview(file.files)" 
+            placeholder="Title"
+            formControlName="image" />
+            <hr>
+            <img  [src]="imgURL" height="200" *ngIf="imgURL" >
+         </mat-form-field>
+      </mat-dialog-content>
+      <mat-dialog-actions>
+         <button class="mat-raised-button mat-primary" type="submit">
+         Save
+            <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+         </button>
+         <button class="mat-raised-button"
+            (click)="close()">
+         Close
+         </button>
+      </mat-dialog-actions>
+   </form>

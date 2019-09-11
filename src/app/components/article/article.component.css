@@ -1,0 +1,32 @@
+.artical-card {
+    
+    max-width: 400px;
+    /* margin: 0 auto; */
+    /* padding: 0 1%; */
+  }
+  
+  .header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
+
+  .mat-card {
+    display: inline-block;
+    /* position: relative; */
+    padding: 20px 40px;
+    border-radius: 4px;
+}
+.card-header{
+    background-color: #ffffff;
+}
+
+.flex-me {
+    display: inline-flex;
+    flex-flow: row wrap;
+    background: grey;
+  }
+/*   
+  mat-card {
+    height: 150px;
+    width: 200px;
+  } */
